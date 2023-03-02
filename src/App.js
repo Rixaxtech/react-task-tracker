@@ -5,6 +5,7 @@ import Footer from "./components/Footer"
 import Tasks from "./components/Tasks"
 import AddTask from './components/AddTask'
 import About from './components/About'
+import HomePage from './components/HomePage'
 
 
 function App() {
@@ -86,13 +87,7 @@ const toggleReminder = async (id) => {
           onAdd={() => setShowAddTask(!showAddTask)}
           showAdd={showAddTask}
         />
-        <Routes>
-          <Route
-            path="/"
-            exact
-            render={(props) => (
-          <>
-                {showAddTask && <AddTask onAdd={addTask} />}
+                        {showAddTask && <AddTask onAdd={addTask} />}
                 {tasks.length > 0 ? (
                   <Tasks
                     tasks={tasks}
@@ -102,10 +97,20 @@ const toggleReminder = async (id) => {
                 ) : (
                   "No Tasks To Show"
                 )}
+        <Routes>
+          
+          {/* <Route
+            path='/'
+            exact
+            render={(props) => (
+              <>
+
               </>
             )}
-          />
-          <Route path="/about" component={About} />
+          /> */}
+           {/* <Route path='/' exact component={HomePage} /> */}
+          <Route path='/' exact render={HomePage} />
+          <Route path="/about" element={<About />} />
         </Routes>
         <Footer />
       </div>
